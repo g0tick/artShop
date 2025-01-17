@@ -1,0 +1,153 @@
+/* Basic Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+/* Header Section */
+.header {
+  width: 100%;
+  background-image: url('../pictures/background.jpeg');
+  background-size: cover;
+  background-position: center;
+  padding: 80px 0;
+  text-align: center;
+}
+
+.header h1 {
+  font-size: 4rem;
+  color: #fff;
+}
+
+/* Shop Section */
+.shop-section {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.shop-banner h2 {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  color: #000000;
+}
+
+.product-categories {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+/* Product Item */
+.product-item {
+  width: 30%;
+  margin: 15px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  position: relative; /* Ensure the dropdown is positioned relative to the product item */
+  
+}
+
+/* Product Image */
+.product-image {
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+  overflow: hidden;
+}
+
+.background-image {
+  height: 100%;  /* Fill the entire height of the parent container */
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.3s ease-in-out;  /* Animate only the transform property */
+}
+
+.product-image .background-image {
+  height: 100%; /* Fills the parent container */
+  width: 100%;
+  background-size: cover;
+  background-position: center; 
+}
+
+/* Hover Effect: Slide image up and reveal description */
+.product-item:hover .product-image {
+  transform: translateY(-100%); /* Slide up */
+  opacity: 0; /* Fade out */
+}
+
+/* Title on top of the Image */
+.overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ffffff;
+  font-size: 1.8rem;
+  font-weight: bold;
+  opacity: 1;
+  z-index: 1;
+  transition: opacity 0.3s ease;
+}
+
+.product-item:hover .overlay {
+  opacity: 1;
+}
+
+/* Description Text (appears on hover, on top of image) */
+.description {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  background-color: #ffffff;
+  font-size: 2rem;
+  color: #000000;
+  text-align: center;
+  opacity: 0;
+  z-index: 2;
+  transition: opacity 0.3s ease;
+}
+
+.product-item:hover .description {
+  opacity: 1;
+}
+
+.product-options {
+  color: black; /* debugging */
+  opacity: 0; /* Start hidden */
+  pointer-events: none; /* Prevent interaction when not visible */
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 100%; /* Make sure it's positioned directly below the item */
+  left: 0;
+  width: 100%; /* Match the width of the parent item */
+  z-index: 999 !important;
+  margin-top: 10px;
+  transform: translateY(0); /* Slightly above the visible area */
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Active state when .product-item is clicked */
+.product-item.active .product-options {
+  opacity: 1;
+  pointer-events: auto; /* Enable interaction when visible */
+  transform: translateY(0); /* Reset position */
+}
+
